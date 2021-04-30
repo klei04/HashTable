@@ -18,7 +18,8 @@ struct Student {
   char lastName[20];
   char firstName[20];
   float GPA;
-  Student* next = NULL;
+  //Student* next = NULL;
+  Student* next;
 };
 
 //Function prototypes
@@ -58,6 +59,7 @@ int main() {
       cin >> newStudent->firstName;
       cout << "Type the GPA of the new student: ";
       cin >> newStudent->GPA;
+      newStudent->next = NULL;
       ADD(newStudent, hashTable, hashTableLength);
     } else if (strcmp(input, "PRINT") == 0) {
       PRINT(hashTable, hashTableLength);
@@ -205,6 +207,7 @@ void GENERATE(int num, Student** & hashTable, int & hashTableLength) {
   Student* generatedStudents[20];
   for (int i = 0; i < 20; i++) {
     generatedStudents[i] = new Student;
+    generatedStudents[i]->next = NULL;
   }
 
   ifstream lastnames;
@@ -241,6 +244,7 @@ void GENERATE(int num, Student** & hashTable, int & hashTableLength) {
     int randomFirstName = rand() % total;
 
     Student* newRandomStudent = new Student;
+    newRandomStudent->next = NULL;
     newRandomStudent->ID = currentID;
     strcpy(newRandomStudent->lastName, generatedStudents[randomLastName]->lastName);
     strcpy(newRandomStudent->firstName, generatedStudents[randomFirstName]->firstName);

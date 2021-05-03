@@ -9,6 +9,7 @@
  #include <cstring>
  #include <math.h>
  #include <fstream>
+ #include <stdlib.h>
 
  using namespace std;
 
@@ -139,6 +140,7 @@
      Student* temp = current->next;
      delete current;
      hashTable[index] = temp;
+     return;
    }
 
    while (current->next != NULL) {
